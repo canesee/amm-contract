@@ -1,5 +1,5 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::collections::LazyOption;
+//use near_sdk::collections::LazyOption;
 use near_sdk::serde::{Deserialize, Serialize};
 
 type AccountId = String;
