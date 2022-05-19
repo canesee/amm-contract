@@ -1,7 +1,7 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::LazyOption;
 use near_sdk::json_types::ValidAccountId;
-use near_sdk::{near_bindgen, BorshStorageKey, PanicOnDefault};
+use near_sdk::{env, near_bindgen, BorshStorageKey, PanicOnDefault};
 
 pub mod metadata;
 pub mod token;
@@ -45,6 +45,7 @@ impl AmmTokenMetadataProvider for AmmContract {
 impl AmmContract {
     #[init]
     pub fn new(owner_id: ValidAccountId, a: TokenId, b: TokenId) -> Self {
+        assert!(!env::state_exists(), "Already initialized");
         let token_metadata_a = AmmTokenMetadata {
             name: "a".to_owned(),
             decimals: 24,
