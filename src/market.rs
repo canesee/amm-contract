@@ -7,7 +7,7 @@ const GAS_BASE_COMPUTE: Gas = 5_000_000_000_000;
 
 #[ext_contract]
 pub trait CollateralToken {
-    fn ft_transfer(&mut self, receiver_id: AccountId, amount: U128, memo: Option<String>);
+    fn c_transfer(&mut self, receiver_id: AccountId, amount: U128, memo: Option<String>);
 }
 
 #[derive(BorshDeserialize, BorshSerialize)]
@@ -69,7 +69,7 @@ impl AMMContract {
             max_shares_in.into(),
         );
         self.markets.replace(market_id.into(), &market);
-        collateral_token::ft_transfer(
+        collateral_token::c_transfer(
             env::predecessor_account_id(),
             U128(out - e),
             None,
