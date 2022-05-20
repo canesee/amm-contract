@@ -4,7 +4,7 @@ use near_sdk::collections::UnorderedMap;
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{env, near_bindgen, AccountId};
 
-#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize)]
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Default)]
 pub struct Token {
     pub id: AccountId,
     pub decimals: u32,
